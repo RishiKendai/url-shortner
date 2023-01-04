@@ -1,0 +1,36 @@
+.row {
+  display: flex;
+  padding: 0.25rem 0.5rem;
+  gap: 0.78rem;
+}
+.col-1 {
+  flex: 1 1 50%;
+}
+.col-2 {
+  flex: 1 1 40%;
+}
+.col-3 {
+  flex: 1 1 10%;
+}
+.child-col {
+  font: 400 1em sans-serif;
+}
+.child-col a {
+  color: hsl(199 89% 48%);
+}
+.col-3.child-col {
+  text-align: center;
+}
+.child-row {
+  padding: 0.66rem;
+  overflow-x: auto;
+}
+.child-row::-webkit-scrollbar {
+  width: 4px;
+  height: 2px;
+  background: none;
+}
+.child-row::-webkit-scrollbar-thumb {
+  width: 4px;
+  background-color: hsl(0 0% 16% / 0.55);
+}

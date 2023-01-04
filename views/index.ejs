@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL-Shortner</title>
+    <!-- ! CSS Link -->
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/index.css" />
+    <!-- ! Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- ! JQuery CDN -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+      integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <!-- ! JS Link -->
+    <script src="../js/script.js" defer></script>
+  </head>
+
+  <body class="bg-purple-50 flex items-center flex-col px-3 py-8">
+    <!-- Error -->
+    <div
+      id="error"
+      class="flex flex-col w-3/4 absolute pt-7 left-2/4 font-fira-sans -translate-x-2/4 z-10 bg-red-200 px-3 py-2 rounded-md"
+    >
+      <span
+        id="error_close"
+        class="text-violet-900 text-xl absolute right-3 top-2 cursor-pointer"
+        ><i class="fa-solid fa-xmark"></i
+      ></span>
+      <p id="error_msg" class="text-red-500"></p>
+    </div>
+    <!-- URL -->
+    <h1
+      class="font-moon-dance text-5xl font-bold tracking-wide text-purple-900 mb-8"
+    >
+      URL Shortner
+    </h1>
+    <div class="flex gap-3 w-full md:w-10/12 mb-8">
+      <label
+        class="text-purple-800 text-2xl font-fira-sans font-medium"
+        for="full_url"
+        >URL</label
+      >
+      <input
+        class="rounded-sm px-3 py-2 w-full bg-violet-200 border-none outline-none"
+        type="url"
+        name="full_url"
+        id="full_url"
+        placeholder="https://yourlongurlname.com"
+      />
+    </div>
+    <!-- Short URL -->
+    <div id="short_url" class="hidden w-full justify-center gap-3 mb-3">
+      <label class="font-fira-sans text-purple-800">Shorten URL:</label>
+      <a class="text-sky-500" href="" target="_blank"></a>
+    </div>
+    <!-- Buttons -->
+    <div class="flex gap-5 justify-center w-full mb-5">
+      <button
+        class="bg-violet-800 focus:bg-violet-900 hover:bg-violet-900 px-3 py-2 font-fira-sans rounded-md capitalize text-white"
+        type="button"
+        id="generate_btn"
+      >
+        generate url
+      </button>
+      <button
+        class="bg-rose-600 focus:bg-rose-700 hover:bg-rose-700 px-3 py-2 font-fira-sans rounded-md capitalize text-white"
+        id="all_url_btn"
+      >
+        Get all urls
+      </button>
+    </div>
+
+    <!-- Display All URLS -->
+    <div id="all_url" class="w-full hidden">
+      <div class="bg-violet-200 row">
+        <p class="col-1 font-fira-sans font-medium text-xl text-violet-900">Long URL</p>
+        <p class="col-2 font-fira-sans font-medium text-xl text-violet-900">Short URL</p>
+        <p class="col-3 font-fira-sans font-medium text-xl text-violet-900">Counts</p>
+      </div>
+      <div id="child-rows"></div>
+    </div>
+  </body>
+</html>

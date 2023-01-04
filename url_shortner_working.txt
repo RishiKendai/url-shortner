@@ -1,0 +1,13 @@
+1. Get Full URL from the user
+2. Check whether the url is already in DB. 
+    if present get the short url pair and send to user(Don't add it again to DB)
+    not present generate short url and check it in DB 
+        if present check the long url is same or not 
+            if same dont add it to db
+        not present add it to db
+3. send the short url to user
+//
+1. once short url is received from client 
+2. check it in DB 
+    if present get full URL and redirect it to that site
+    not present send error msge
