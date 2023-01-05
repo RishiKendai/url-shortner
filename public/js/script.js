@@ -5,7 +5,8 @@ const short_url_field = document.querySelector("#short_url");
 const error_close = document.querySelector("#error_close");
 const error_msg = document.querySelector("#error_msg");
 const child_rows = document.querySelector("#child-rows");
-const loader = document.querySelector(".loader");
+const loader1 = document.querySelector(".loader-1");
+const loader2 = document.querySelector(".loader-2");
 
 // ! Global Declarations
 let timer;
@@ -27,6 +28,7 @@ function createShortUrl() {
     }, 5000);
     return;
   }
+  loader1.classList.add("show");
   $.ajax({
     method: "post",
     url: "short-url",
@@ -35,6 +37,7 @@ function createShortUrl() {
     async: true,
     success: function (res) {
       if (res.status) {
+        loader1.classList.remove("show");
         short_url_field.style.display = "flex";
         const a = document.querySelector("#short_url a");
         a.setAttribute("href", res.short_url);
@@ -53,14 +56,14 @@ function createShortUrl() {
 
 // Fetch all URLS
 function getURL() {
-  loader.classList.add("show");
+  loader2.classList.add("show");
   $.ajax({
     method: "get",
     url: "/all-url",
     dataType: "json",
     async: true,
     success: function (res) {
-      loader.classList.remove("show");
+      loader2.classList.remove("show");
       if (res.status) return displayUrls(res.urls);
 
       closeError();

@@ -37,7 +37,8 @@
 
 .loader {
   align-items: center;
-  display: none;
+  display: flex;
+  margin-bottom: 2rem;
 }
 .loader.show{
   display: flex;
