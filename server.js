@@ -25,7 +25,8 @@ mongoose.connect(uri, {
 });
 
 app.get("/", async (req, res) => {
-  return res.render("index");
+  // return res.render("index");
+  return res.send('in Vercel')
 });
 
 app.get("/favicon.ico", function (req, res) {
