@@ -3,11 +3,11 @@ h3 {
   background: linear-gradient(to right, hsl(260 100% 60%), hsl(275 100% 70%));
   -webkit-background-clip: text;
   background-clip: text;
-  font: 500 4rem "Fira Sans", "sans-serif";
+  font: 500 4rem Fira Sans, sans-serif;
   letter-spacing: 3px;
   -webkit-text-stroke: 4px transparent;
 }
 
-p{
-    color: hsl(260 100% 97% / .85);
+p {
+  color: hsl(260 100% 97% / 0.85);
 }

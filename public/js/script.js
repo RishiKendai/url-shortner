@@ -5,6 +5,7 @@ const short_url_field = document.querySelector("#short_url");
 const error_close = document.querySelector("#error_close");
 const error_msg = document.querySelector("#error_msg");
 const child_rows = document.querySelector("#child-rows");
+const loader = document.querySelector(".loader");
 
 // ! Global Declarations
 let timer;
@@ -52,12 +53,14 @@ function createShortUrl() {
 
 // Fetch all URLS
 function getURL() {
+  loader.classList.add("show");
   $.ajax({
     method: "get",
     url: "/all-url",
     dataType: "json",
     async: true,
     success: function (res) {
+      loader.classList.remove("show");
       if (res.status) return displayUrls(res.urls);
 
       closeError();

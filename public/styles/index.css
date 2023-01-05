@@ -34,3 +34,50 @@
   width: 4px;
   background-color: hsl(0 0% 16% / 0.55);
 }
+
+.loader {
+  align-items: center;
+  display: none;
+}
+.loader.show{
+  display: flex;
+}
+.loader p {
+  font: 800 1em Fira Sans, sans-serif;
+  background: linear-gradient(to right, rgb(91 33 182), rgb(225 29 72));
+  -webkit-background-clip: text;
+  color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+  margin-right: 0.7rem;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50px;
+  margin-right: 0.7rem;
+}
+.dot-1 {
+  animation: dot 1s 0.15s infinite forwards ease;
+}
+.dot-2 {
+  animation: dot 1s 0.25s infinite forwards ease-in;
+}
+.dot-3 {
+  animation: dot 1s 0.55s infinite forwards ease-in-out;
+}
+@keyframes dot {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    background: hsl(263 69% 62%);
+  }
+  75% {
+    background: hsl(347 77% 60%);
+  }
+  to {
+    opacity: 1;
+  }
+}
