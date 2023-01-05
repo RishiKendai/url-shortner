@@ -24,12 +24,10 @@ mongoose.connect(uri, {
   useUnifiedTopology: true,
 });
 
-// app.get("/", async (req, res) => {
-//   return res.render("index");
-// });
-app.get("/", (req, res) => {
-  res.send("Express on Vercel");
+app.get("/", async (req, res) => {
+  return res.render("index");
 });
+
 app.get("/favicon.ico", function (req, res) {
   return;
 });
