@@ -82,7 +82,7 @@ app.get("/all-url", async (req, res) => {
 
 // ! Get Shorten URL and redirect to original link
 app.get("/:shortId", async (req, res) => {
-  const short_url = req.params.shortId;
+  const short_url = req.url;
   console.log(short_url);
   const hasURL = await Url.findOne({ short_url: short_url });
   if (hasURL) {
