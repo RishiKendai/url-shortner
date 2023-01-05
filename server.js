@@ -2,13 +2,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const shortid = require("shortid");
+const path = require("path");
 
 // ! Mongoose Models
 const Url = require("./models/url_models");
 
 // ! Configure Stuffs for Express
 const app = express();
-app.set("view engine", "ejs");
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -17,15 +17,19 @@ mongoose.set("strictQuery", true);
 
 // Set Port and Fetch Variables from .env file
 const port = process.env.PORT || 3000;
-const uri = process.env.MONGO_URI;
 
 // ! Connect to MongoDB
-mongoose.connect(uri, {
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log("mongodb connected"))
+  .catch((err) => {
+    console.log(err.message);
+  });
 
 app.get("/", async (req, res) => {
-  return res.render("index");
+  return res.sendFile(path.join(__dirname, "index.html"));
   // return res.send('in Vercel')
 });
 
@@ -76,15 +80,18 @@ app.get("/all-url", async (req, res) => {
 // ! Get Shorten URL and redirect to original link
 app.get("/:shortId", async (req, res) => {
   const short_url = req.params.shortId;
+  console.log(short_url);
   const hasURL = await Url.findOne({ short_url: short_url });
   if (hasURL) {
     hasURL.clicks++;
     hasURL.save();
     return res.redirect(hasURL.long_url);
   } else {
-    return res.render("404");
+    return res.sendFile(path.join(__dirname, "404.html"));
   }
 });
 
 // ! Server Listening
-app.listen(port);
+app.listen(port, () => {
+  console.log('server running')
+});
