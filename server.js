@@ -58,7 +58,7 @@ app.post("/short-url", async (req, res) => {
     return res.json({
       status: true,
       long_url: hasURL.long_url,
-      short_url: hasURL.short_url,
+      short_url: `https://get-ly.vercel.app/${hasURL.short_url}`,
     });
   }
   // Create a Shorten URL
