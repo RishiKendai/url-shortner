@@ -30,7 +30,6 @@ mongoose
 
 app.get("/", async (req, res) => {
   return res.sendFile(path.join(__dirname, "index.html"));
-  // return res.send('in Vercel')
 });
 
 app.get("/favicon.ico", function (req, res) {
