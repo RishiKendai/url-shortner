@@ -87,15 +87,13 @@ function displayUrls(urls) {
     child_row.classList.add("row", "child-row");
     // Add Long url
     const col1 = document.createElement("p");
-    const col1_aTag = document.createElement("a");
-    col1_aTag.setAttribute("href", url.long_url);
-    col1_aTag.textContent = url.long_url;
-    col1.appendChild(col1_aTag);
+    col1.textContent = url.long_url;
     col1.classList.add("col-1", "child-col");
     // Add Short url
     const col2 = document.createElement("p");
     const col2_aTag = document.createElement("a");
     col2_aTag.setAttribute("href", url.short_url);
+    col2_aTag.setAttribute("target", "_blank");
     col2_aTag.textContent = url.short_url;
     col2.appendChild(col2_aTag);
     col2.classList.add("col-2", "child-col");

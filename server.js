@@ -62,27 +62,32 @@ app.post("/short-url", async (req, res) => {
     });
   }
   // Create a Shorten URL
-  const short_url = `https://get-ly.vercel.app/${shortid.generate()}`;
+  let short_url = shortid.generate();
   //  Add it to DB
   const createdUrl = await Url.create({
     long_url: long_url,
     short_url: short_url,
   });
-  if (createdUrl)
+  if (createdUrl) {
+    short_url = `https://get-ly.vercel.app/${short_url}`;
     return res.json({ status: true, long_url: long_url, short_url: short_url });
+  }
   return res.json({ status: false, msg: "Error creating url" });
 });
 
 // ! Fetch all URL from DB
 app.get("/all-url", async (req, res) => {
-  const allUrl = await Url.find({}, "long_url short_url clicks");
+  let allUrl = await Url.find({}, "long_url short_url clicks");
+  allUrl.forEach((urls) => {
+    urls.short_url = `https://get-ly.vercel.app/${urls.short_url}`;
+  });
   if (allUrl.length > 0) return res.json({ status: true, urls: allUrl });
   return res.json({ status: false, msg: "Oops! No URL Available☹️" });
 });
 
 // ! Get Shorten URL and redirect to original link
 app.get("/:shortId", async (req, res) => {
-  const short_url = req.url;
+  const short_url = req.params.shortId;
   console.log(short_url);
   const hasURL = await Url.findOne({ short_url: short_url });
   if (hasURL) {
