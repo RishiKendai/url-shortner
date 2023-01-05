@@ -11,7 +11,7 @@ const Url = require("./models/url_models");
 const app = express();
 require("dotenv").config();
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json({ extended: true }));
 mongoose.set("strictQuery", true);
 
@@ -93,5 +93,5 @@ app.get("/:shortId", async (req, res) => {
 
 // ! Server Listening
 app.listen(port, () => {
-  console.log('server running')
+  console.log("server running");
 });
