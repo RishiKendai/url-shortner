@@ -36,8 +36,8 @@ function createShortUrl() {
     dataType: "json",
     async: true,
     success: function (res) {
+      loader1.classList.remove("show");
       if (res.status) {
-        loader1.classList.remove("show");
         short_url_field.style.display = "flex";
         const a = document.querySelector("#short_url a");
         a.setAttribute("href", res.short_url);
