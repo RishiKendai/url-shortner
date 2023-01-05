@@ -37,10 +37,10 @@
 
 .loader {
   align-items: center;
-  display: flex;
+  display: none;
   margin-bottom: 2rem;
 }
-.loader.show{
+.loader.show {
   display: flex;
 }
 .loader p {
