@@ -40,10 +40,7 @@ app.get("/favicon.ico", function (req, res) {
 app.post("/short-url", async (req, res) => {
   const long_url = req.body.full_url;
 
-  if (
-    long_url === "https://get-ly.vercel.app" ||
-    long_url === "get-ly.vercel.app"
-  ) {
+  if (long_url.includes("get-ly.vercel.app")) {
     return res.json({ status: false, msg: "😒Dont try to short me" });
   }
   // if url is empty return
