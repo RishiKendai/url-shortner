@@ -28,7 +28,7 @@ function createShortUrl() {
   }
   $.ajax({
     method: "post",
-    url: "/short-url",
+    url: "https://get-ly.vercel.app/short-url",
     data: { full_url },
     dataType: "json",
     async: true,
@@ -54,7 +54,7 @@ function createShortUrl() {
 function getURL() {
   $.ajax({
     method: "get",
-    url: "/all-url",
+    url: "https://get-ly.vercel.app/all-url",
     dataType: "json",
     async: true,
     success: function (res) {

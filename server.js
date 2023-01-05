@@ -41,7 +41,10 @@ app.get("/favicon.ico", function (req, res) {
 app.post("/short-url", async (req, res) => {
   const long_url = req.body.full_url;
 
-  if (long_url === "https://get.ly.vercel.app") {
+  if (
+    long_url === "https://get-ly.vercel.app" ||
+    long_url === "get-ly.vercel.app"
+  ) {
     return res.json({ status: false, msg: "😒Dont try to short me" });
   }
   // if url is empty return
@@ -59,7 +62,7 @@ app.post("/short-url", async (req, res) => {
     });
   }
   // Create a Shorten URL
-  const short_url = `https://get.ly.vercel.app/${shortid.generate()}`;
+  const short_url = `https://get-ly.vercel.app/${shortid.generate()}`;
   //  Add it to DB
   const createdUrl = await Url.create({
     long_url: long_url,
